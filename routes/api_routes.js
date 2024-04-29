@@ -41,7 +41,7 @@ router.get('/teams/:id'), async (req, res) => {
 
 //CREATE A GET route to get a single player by ID  and attach their assoicated teams
 router.get('/players/:id', async (req, res) => {
-    const id = req.params
+    const id = req.params.id
 
     try {
         const player = await Player.findByPk(id, {
@@ -128,7 +128,7 @@ router.put('/players/:id', async (req, res) => {
         await player.update(newData)
         //show updated player
         res.json(player)
-    } catch (err) {
+    }catch (err) {
         console.error(err)
         res.json({ message: 'Error' })
     }
